@@ -27,13 +27,14 @@ angular.module('mean.books')
             }).success(function(data, status, headers, config) {
                         console.log('args: ', arguments);
 
-                if (data.items) {
-                    for( var i = 0; i<data.items.length; i++){
-                      console.log(data.items[i].volumeInfo.title);
-                      console.log(data.items[i].volumeInfo.authors[0]);
-                    }
-                } else { console.log('no items!');
-                }
+                // if (data.items) {
+                //     for( var i = 0; i<data.items.length; i++){
+                //     console.log(data.items[i].volumeInfo.title);
+                    //  console.log(data.items[i].volumeInfo.authors[0]);
+                      $scope.bookTitleInfo = data.items;
+                      //$scope.bookAuthorInfo = data.items[i].volumeInfo.authors[0];
+                      console.log($scope.bookinfo);
+                // } else { console.log('no items!');
            // console.log(data.items);
             }).error(function(data, status, headers, config) {
                         console.log('ERROR', arguments);
