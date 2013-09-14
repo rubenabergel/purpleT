@@ -8,7 +8,9 @@
       </div>
     </div>
     <div>
-        <li  ng-repeat="title in bookTitleInfo">{{title.volumeInfo.title}} - {{title.volumeInfo.authors[0]}}</li>
+      <ul ng-show="toggleTitleList">
+        <li ng-repeat="title in bookTitleInfo" enter leave><span ng-click="sendTitle(title)">{{title.volumeInfo.title}} - {{title.volumeInfo.authors[0]}}</span></li>
+      <ul>
     </div>
     <div class="control-group">
       <label class="control-label" for="content">Content</label>
@@ -27,3 +29,4 @@
   </form>
 </section>
 
+<!-- {{title.volumeInfo.imageLinks.smallThumbnail}} -->
