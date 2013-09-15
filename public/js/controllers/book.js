@@ -15,7 +15,7 @@ angular.module('mean.books')
         this.title = "";
         this.content = "";
     };
-    $scope.toggleTitleList = false;
+    $scope.toggleTitleList = true;
 
     $scope.sendTitle = function(titleObj){
         $scope.title = titleObj.volumeInfo.title;
@@ -29,11 +29,18 @@ angular.module('mean.books')
                 method: 'JSONP',
                 url: 'https://www.googleapis.com/books/v1/volumes?q=' +$scope.title+'&callback=JSON_CALLBACK&key=AIzaSyAHGLwa31f78oh9ogWsGZbN2eMl-Dp1mmY'
             }).success(function(data, status, headers, config) {
+               if ($scope.toggleTitleList === false){
+                $scope.toggleTitleList = false;
+               } else {
                 $scope.toggleTitleList = true;
-                    console.log(data.items);
-                $scope.bookTitleInfo = data.items;
+               }
+               if ( newval !== $scope.title ){
+                $scope.toggleTitleList = true;
+               }
+                      //  console.log(data.items);
+                      $scope.bookTitleInfo = data.items;
             }).error(function(data, status, headers, config) {
-                //    console.log('ERROR', arguments);
+                    //    console.log('ERROR', arguments);
             });
         }
     });
@@ -55,3 +62,5 @@ app.directive("leave", function(){
         });
     };
 });
+
+

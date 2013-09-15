@@ -1,12 +1,109 @@
 .navbar .nav> li > a.brand {
     padding-left: 20px;
     margin-left: 0;
+    color: green;
 }
-
+// resize parent heigh to 100%
 .content {
     margin-top: 50px;
+
     width: 100%;
+  
 }
+ html, body {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+.sidescroll {
+    height : 100%;
+  
+    margin: 0;
+    padding: 0;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    white-space: nowrap;
+  }
+
+  .sidescroll-content {
+    height: 100%;
+  }
+
+  .grid,
+  .stack,
+  .panel {
+    width: 1em;
+    height: 100%;
+    float: left;
+
+    /*
+      Enable hardware accelaration
+      This renders the element with the GPU
+    */
+    -webkit-transform: translate3d(0,0,0);
+  }
+
+  .grid.small {
+    width: 0.5em;
+  }
+
+  .grid div {
+    float: left;
+    width: 0.5em;
+    height: 50%;
+    background-color: blue;
+    border: 1px solid black;
+  }
+
+  .stack {
+    width: 1em;
+  }
+
+  .stack div {
+    width: 1em;
+    height: 50%;
+    background-color: green;
+    border: 1px solid black;
+
+    background-position: top center;
+  }
+
+  .panel {
+    width: 1em;
+    background-color: gray;
+    border: 1px solid black;
+  }
+
+  @media all and (max-height: 600px), all and (orientation: portrait) {
+    .grid.small {
+      width: 2em;
+    }
+    .grid {
+      width: 4em;
+    }
+    .grid div {
+      width: 1em;
+      height: 100%;
+      background-color: red;
+    }
+  }
+
+  .picture {
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+  }
 
 footer {
    position:fixed;

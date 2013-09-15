@@ -52,4 +52,17 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
 
 
 }]);
+app.directive("scrollme", function(){
+    return {
+        restrict: "E",
+        template: "<div>HELLLLO</div>"
+    };
+});
 
+    
+app.directive("scroll", function(){
+    return {
+        restrict:"E",
+        templateUrl: '/views/templates/scroll.html'
+    };
+});
