@@ -31,3 +31,20 @@ exports.article = {
         next();
     }
 };
+exports.book = {
+    hasAuthorization: function(req, res, next) {
+        if (req.book.user.id != req.user.id) {
+            return res.send(401, 'User is not authorized');
+        }
+        next();
+    }
+};
+
+exports.video = {
+    hasAuthorization: function(req, res, next) {
+        if (req.video.user.id != req.user.id) {
+            return res.send(401, 'User is not authorized');
+        }
+        next();
+    }
+};

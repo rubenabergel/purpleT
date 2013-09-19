@@ -61,6 +61,7 @@ module.exports = function(app, passport, auth) {
 
     //Finish with setting up the userId param
     app.param('userId', users.user);
+//####################################################################
 
     //Article Routes
     var articles = require('../app/controllers/articles');
@@ -69,11 +70,39 @@ module.exports = function(app, passport, auth) {
     app.get('/articles/:articleId', articles.show);
     app.put('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.update);
     app.del('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy);
-
-
+    
     //Finish with setting up the articleId param
     app.param('articleId', articles.article);
 
+//########################################################################
+
+    //Books Routes
+    var books = require('../app/controllers/books');
+    app.get('/books', books.all);
+    app.post('/books', auth.requiresLogin, books.create);
+    app.get('/books/:bookId', books.show);
+    app.put('/books/:bookId', auth.requiresLogin, auth.book.hasAuthorization, books.update);
+    app.del('/books/:bookId', auth.requiresLogin, auth.book.hasAuthorization, books.destroy);
+
+    //Finish with setting up the bookId param
+    app.param('bookId', books.book);
+
+//########################################################################
+    
+    //Video Routes
+    var videos = require('../app/controllers/videos');
+    app.get('/videos', videos.all);
+    app.post('/videos', auth.requiresLogin, videos.create);
+    app.get('/videos/:videoId', videos.show);
+    app.put('/videos/:videoId', auth.requiresLogin, auth.video.hasAuthorization, videos.update);
+    app.del('/videos/:videoId', auth.requiresLogin, auth.video.hasAuthorization, videos.destroy);
+
+    //Finish with setting up the bookId param
+    app.param('videoId', videos.video);
+
+////////////////////////////////////////////////////////////////////////////
+     var profile = require('../app/controllers/profile');
+     app.get('/profile');
     //Home route
     var index = require('../app/controllers/index');
     app.get('/', index.render);

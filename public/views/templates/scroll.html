@@ -1,127 +1,5 @@
-<!-- inside template
-<div>hello</div>
-<p>Hello Ruben</p>
-<script type="text/javascript">
-  console.log('inside template');
-</script>
- -->
-<!--
-<style>
-  html, body {
-    height: 100%;
-  }
-  body {
-    margin: 0;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-.sidescroll {
-    height : 100%;
-
-
-    margin: 0;
-    padding: 0;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    -webkit-overflow-scrolling: touch;
-
-    white-space: nowrap;
-  }
-*/
-/* .sidescroll-content {
-    height: 100%;
-  }
-
-  .grid,
-  .stack,
-  .panel {
-    width: 1em;
-    height: 100%;
-    float: left;
-
-    
-      Enable hardware accelaration
-      This renders the element with the GPU
-    
-    -webkit-transform: translate3d(0,0,0);
-  }
-
-  .grid.small {
-    width: 0.5em;
-  }
-
-  .grid div {
-    float: left;
-    width: 0.5em;
-    height: 50%;
-    background-color: blue;
-    border: 1px solid black;
-  }
-
-  .stack {
-    width: 1em;
-  }
-
-  .stack div {
-    width: 1em;
-    height: 50%;
-    background-color: green;
-    border: 1px solid black;
-
-    background-position: top center;
-  }
-
-  .panel {
-    width: 1em;
-    background-color: gray;
-    border: 1px solid black;
-  }
-
-  @media all and (max-height: 600px), all and (orientation: portrait) {
-    .grid.small {
-      width: 2em;
-    }
-    .grid {
-      width: 4em;
-    }
-    .grid div {
-      width: 1em;
-      height: 100%;
-      background-color: red;
-    }
-  }
-
-  .cow {
-    background-image: url('cow.jpg') !important;
-  }
-
-  .monalisa {
-    background-image: url('monalisa.jpg') !important;
-  }
-
-  .picture {
-    background-size: cover;
-
-    background-position: center center;
-
-    background-repeat: no-repeat;
-  }
-  </style>*/ -->ig
-
-
 <div class="sidescroll" id="sidescroll">
   <div class="sidescroll-content">
-    <div class="panel picture cow"></div>
-
-    <div class="grid small">
-      <div class="picture monalisa"></div>
-      <div class="picture cow"></div>
-    </div>
 
     <div class="stack">
       <div class="medium picture cow"></div>
@@ -129,34 +7,33 @@
     </div>
 
     <div class="grid">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-
-    <div class="panel"></div>
-
-    <div class="grid small">
-      <div></div>
-      <div></div>
-    </div>
-
-    <div class="stack">
-      <div class="medium"></div>
-      <div class="medium"></div>
-    </div>
-
-    <div class="grid">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div data-ng-repeat="article in articles"> 
+        <h3>{{article.title}}</h3>
+        <h3>{{article.created | date:'medium'}}</h3>
+        <h5>{{article.content}}
+      </div>
     </div>
   </div>
 </div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- <section data-ng-controller="ArticlesController" data-ng-init="find()">
+    <ul class="articles unstyled">
+    <li data-ng-repeat="article in articles">
+      <span>{{article.created | date:'medium'}}</span> /
+      <span>{{article.user.name}}</span>
+      <h2><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></h2>
+      <div>{{article.content}}</div>
+    </li>
+  </ul>
+  
+
+  <h1 data-ng-hide="!articles || articles.length">No articles yet. <br> Why don't you <a href="/#!/articles/create">Create One</a>?</h1>
+
+
+</section>  
+ -->
+
 <script>
   function SideScroll(selector) {
     // Store reference to element
@@ -190,9 +67,7 @@
     else
       size = width;
 
-    this.$el.css({
-      fontSize: size
-    });
+    this.$el.css({ fontSize: size });
 
     // Calculate width of children
     var width = 0;

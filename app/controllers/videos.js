@@ -3,91 +3,90 @@
  */
 var mongoose = require('mongoose'),
     async = require('async'),
-    Book = mongoose.model('Book'),
+    Video = mongoose.model('Video'),
     _ = require('underscore');
 
 
 /**
- * Find book by id
+ * Find video by id
  */
-exports.book = function(req, res, next, id) {
-    Book.load(id, function(err, book) {
+exports.video = function(req, res, next, id) {
+    Video.load(id, function(err, video) {
         if (err) return next(err);
-        if (!book) return next(new Error('Failed to load book ' + id));
-        req.book = book;
+        if (!video) return next(new Error('Failed to load video ' + id));
+        req.video = video;
         next();
     });
 };
 
 /**
- * Create a book
+ * Create a video
  */
 exports.create = function(req, res) {
-    var book = new Book(req.body);
-    book.user = req.user;
+    var video = new Video(req.body);
+    video.user = req.user;
 
-    book.save(function(err) {
+    video.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                book: book
+                video: video
             });
         } 
         else {
-            res.jsonp(book);
+            res.jsonp(video);
         }
     });
 };
 
 /**
- * Update a book
+ * Update a video
  */
 exports.update = function(req, res) {
-    var book = req.book;
+    var video = req.video;
 
-    book = _.extend(book, req.body);
+    video = _.extend(video, req.body);
 
-    book.save(function(err) {
-        res.jsonp(book);
+    video.save(function(err) {
+        res.jsonp(video);
     });
 };
 
 /**
- * Delete an book
+ * Delete an video
  */
 exports.destroy = function(req, res) {
-    var book = req.book;
+    var video = req.video;
 
-    book.remove(function(err) {
+    video.remove(function(err) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(book);
+            res.jsonp(video);
         }
     });
 };
 
 /**
- * Show an book
+ * Show an video
  */
 exports.show = function(req, res) {
-    res.jsonp(req.book);
+    res.jsonp(req.video);
 };
 
 /**
  * List of Articles
  */
 exports.all = function(req, res) {
-    Book.find().sort('-created').populate('user').exec(function(err, books) {
+    Video.find().sort('-created').populate('user').exec(function(err, videos) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(books);
+            res.jsonp(videos);
         }
     });
 };
-

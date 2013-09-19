@@ -1,36 +1,33 @@
-<section data-ng-controller="BooksController">
+<section data-ng-controller="VideosController">
   <form class="form-horizontal" data-ng-submit="create()">
-   
     <div class="control-group">
-      <label class="control-label" for="title">Book Title</label>
+      <label class="control-label" for="title">URL</label>
       <div class="controls">
         <input type="text" data-ng-model="title" id="title" placeholder="Title" required>
+
       </div>
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="title">Author</label>
+      <label class="control-label" for="url">url</label>
       <div class="controls">
-        <input type="text" data-ng-model="name" id="name" placeholder="Name" required>
+        <input type="text" data-ng-model="url" id="url" placeholder="Url" required>
       </div>
     </div>
     
 
-    <div>
-      <ul ng-show="toggleTitleList">
-        <li ng-repeat="title in bookTitleInfo" enter leave><span ng-click="sendTitle(title)">{{title.volumeInfo.title}} - {{title.volumeInfo.authors[0]}}</span></li>
-      <ul>
-    </div>
+
+
     <div class="control-group">
       <label class="control-label" for="content">Content</label>
       <div class="controls">
         <textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
       </div>
     </div>
+    <div class="control-group">
+      <div class="controls">
         <input type="submit" class="btn">
       </div>
     </div>
   </form>
 </section>
-
-<!-- {{title.volumeInfo.imageLinks.smallThumbnail}} -->

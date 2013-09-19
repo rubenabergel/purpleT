@@ -1,0 +1,6 @@
+<section data-ng-controller="BooksController" data-ng-init="findOne()">
+  <span>{{book.created | date:'medium'}}</span> /
+  <span>{{book.user.name}}</span>
+  <h2>{{book.title}} {{book.author}}<a data-ng-show="global.user._id == book.user._id" href="/#!/books/{{book._id}}/edit">edit</a></h2>
+  <div>{{book.content}}</div>
+</section>

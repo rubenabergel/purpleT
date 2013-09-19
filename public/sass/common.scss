@@ -6,9 +6,23 @@
 // resize parent heigh to 100%
 .content {
     margin-top: 50px;
-
+    height: 100%;
     width: 100%;
-  
+
+
+.container {
+  height:100%;
+  width: 100%;
+}
+section{
+  height: 100%;
+  width:100%;
+}
+
+div{
+  height: 100%;
+}
+
 }
  html, body {
     height: 100%;
@@ -22,7 +36,7 @@
   }
 .sidescroll {
     height : 100%;
-  
+    font-size: 50px;
     margin: 0;
     padding: 0;
 
@@ -79,7 +93,7 @@
 
   .panel {
     width: 1em;
-    background-color: gray;
+    background-color: orange;
     border: 1px solid black;
   }
 

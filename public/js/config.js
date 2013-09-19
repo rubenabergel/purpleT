@@ -17,13 +17,48 @@ window.app.config(['$routeProvider',
         when('/', {
             templateUrl: 'views/index.html'
         }).
+        
+/////////////////////////////////////////
+
+        when('/books', {
+            templateUrl: 'views/books/list.html'
+        }).
         when('/books/create', {
             templateUrl: 'views/books/create.html'
         }).
+        when('/books/:bookId/edit', {
+            templateUrl: 'views/books/edit.html'
+        }).
+        when('/books/:bookId', {
+            templateUrl: 'views/books/view.html'
+        }).
+       
+
+//////////////////////////////////////////////////
+        when('/videos', {
+            templateUrl: 'views/videos/list.html'
+        }).
+
+        when('/videos/create', {
+            templateUrl: 'views/videos/create.html'
+        }).
+        when('/video/:videoId/edit', {
+            templateUrl: 'views/videos/edit.html'
+        }).
+        when('/videos/:videoId', {
+            templateUrl: 'views/videos/view.html'
+        }).
+////////////////////////////////////////////////////////////////////
+        when('/profile', {
+            templateUrl: 'views/profile/profile.html'
+        }).
+
+///////////////////////////////////////////////////////
         otherwise({
             redirectTo: '/'
         });
-    }
+     }  
+
 ]);
 
 //Setting HTML5 Location Mode

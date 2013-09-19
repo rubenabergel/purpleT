@@ -1,0 +1,28 @@
+<section data-ng-controller="ProfileController" data-ng-init="find()">
+<h2>Hello</h2>
+
+<ul>
+<li data-ng-repeat="article in articles">
+<span>{{article.created | date:'medium'}}</span> 
+</li>
+<ul>
+<!--  <ul class="articles unstyled">
+    <li data-ng-repeat="article in articles">
+      <span>{{article.created | date:'medium'}}</span> /
+      <span>{{article.user.name}}</span>
+      <h2><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></h2>
+      <div>{{article.content}}</div>
+    </li>
+  </ul>
+
+      <li data-ng-repeat="book in books">
+      <span>{{book.created | date:'medium'}}</span> /
+      <span>{{book.user.name}}</span>
+    <h2><a data-ng-href="#!/books/{{book._id}}">{{book.title}}</a></h2>
+      <div>{{book.content}}</div>
+      <div>{{article.content}}</div>
+    </li>
+  </ul> -->
+
+
+</section>  

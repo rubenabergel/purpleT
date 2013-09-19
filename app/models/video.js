@@ -7,9 +7,9 @@ var mongoose = require('mongoose'),
 
 
 /**
- * Book Schema
+ * Video Schema
  */
-var BookSchema = new Schema({
+var VideoSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
@@ -19,12 +19,21 @@ var BookSchema = new Schema({
         default: '',
         trim: true
     },
-    author: {
+    Author: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    url: {
         type: String,
         default: '',
         trim: true
     },
     content: {
+        type: String,
+        default: '',
+        trim: true
+    Yid: {
         type: String,
         default: '',
         trim: true
@@ -38,14 +47,15 @@ var BookSchema = new Schema({
 /**
  * Validations
  */
-BookSchema.path('title').validate(function(title) {
+
+VideoSchema.path('title').validate(function(title) {
     return title.length;
 }, 'Title cannot be blank');
 
 /**
  * Statics
  */
-BookSchema.statics = {
+VideoSchema.statics = {
     load: function(id, cb) {
         this.findOne({
             _id: id
@@ -53,4 +63,4 @@ BookSchema.statics = {
     }
 };
 
-mongoose.model('Book', BookSchema);
+mongoose.model('Video', VideoSchema);
