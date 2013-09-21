@@ -29,6 +29,11 @@ var BookSchema = new Schema({
         default: '',
         trim: true
     },
+    thumbnail: {
+        type: String,
+        default: '',
+        trim: true
+    },
     user: {
         type: Schema.ObjectId,
         ref: 'User'

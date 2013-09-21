@@ -6,8 +6,9 @@ angular.module('mean.videos')
     $scope.create = function() {
         var video = new Videos({
             title: this.title,
-            content: this.content
-            url = this.url
+            content: this.content,
+            url: this.url,
+            Yid: this.Yid
         });
         video.$save(function(response) {
             $location.path("videos/" + response._id);
@@ -16,6 +17,7 @@ angular.module('mean.videos')
         this.title = "";
         this.content = "";
         this.url = "";
+        this.Yid = "";
     };
 
 
@@ -56,16 +58,17 @@ angular.module('mean.videos')
     };
 
     $scope.findYid = function(url){
-       var result;
-       for ( char in url){
-         if ( char = "=" ){
-            result = url.slice(0, char);
-                console.log("1", result);
-
+       $scope.Yid;
+       for ( char in url ){
+         if ( url[char] === "=" ){
+            $scope.Yid = url.slice(char);
+            console.log('1',Yid);
         }
-    }return result;
-    console.log("2", result);
+    }return $scope.Yid;
+    };
 
+        $scope.sendVideoinfo = function(url){
+        $scope.url = video.url;
     };
 
 

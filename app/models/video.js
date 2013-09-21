@@ -33,6 +33,7 @@ var VideoSchema = new Schema({
         type: String,
         default: '',
         trim: true
+    },
     Yid: {
         type: String,
         default: '',

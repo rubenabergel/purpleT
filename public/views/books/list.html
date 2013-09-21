@@ -1,41 +1,37 @@
-<h1>Hello , this is the list</h1>
-
 <section data-ng-controller="BooksController" data-ng-init="find()">
 
-
-<!-- 
 <div ng-app="mean.books">
+<div class="sidescroll" id="sidescroll" horiscroller ng-model="books"></div>
+</div>
+
+
+<!-- <div ng-app="mean.books">
 
 <scroll><scroll>
 </div> -->
 
 
-<h1>Hello , this is the list</h1>
+<!--  <h1>Hello , this is the list</h1>
+ -->
 
 
 
-
-  <ul>
+ <!--  <ul>
     <li data-ng-repeat="book in books">
-      <div >1{{book.created | date:'medium'}}</div> /
-      <span>2{{book.user.name}}</span>
-      <span>3{{book.author}}</span>
-      <span>4{{title.volumeInfo.authors[0]}}</span>
-      <span>5{{book.author}}</span>
-      <span>6{{books.author}}</span>
+      <div >{{book.created | date:'medium'}}</div> /
+      <span>{{book.user.name}}</span>
+
       <h2><a data-ng-href="#!/books/{{book._id}}">{{book.title}}</a></h2>
-      <div>{{book.content}}</div>
+      <img src={{book.thumbnail}}></h4>
+      <h3>{{book.author}}
     </li>
   </ul>
-  
+    -->
 
-  <h1 data-ng-hide="!books || books.length">No books yet. <br> Why don't you <a href="/#!/books/create">Create One</a>?</h1>
-
-
-</section>  
-
-
-<!--  <ul class="books unstyled">
+<!--   <h1 data-ng-hide="!books || books.length">No books yet. <br> Why don't you <a href="/#!/books/create">Create One</a>?</h1>
+ -->
+<!--
+ <ul class="books unstyled">
     <li data-ng-repeat="article in books">
       <span>{{article.created | date:'medium'}}</span> /
       <span>{{article.user.name}}</span>

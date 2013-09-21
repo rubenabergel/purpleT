@@ -1,21 +1,27 @@
-<div class="sidescroll" id="sidescroll">
   <div class="sidescroll-content">
 
-    <div class="stack">
-      <div class="medium picture cow"></div>
-      <div class="medium picture monalisa"></div>
-    </div>
-
     <div class="grid">
-      <div data-ng-repeat="article in articles"> 
+      <div data-ng-repeat="article in ngModel"> 
         <h3>{{article.title}}</h3>
         <h3>{{article.created | date:'medium'}}</h3>
-        <h5>{{article.content}}
+        <h5>{{article.content}}</h5>
+
+
       </div>
     </div>
-  </div>
-</div>
 
+  </div>
+
+   <div class="grid">
+      <div data-ng-repeat="book in ngModel"> 
+        <h3>{{book.title}}</h3>
+        <h3>{{book.created | date:'medium'}}</h3>
+        <h5>{{article.content}}</h5>
+        <img src={{book.thumbnail}}>
+      </div>
+    </div>
+
+  </div>
 
 <!-- <section data-ng-controller="ArticlesController" data-ng-init="find()">
     <ul class="articles unstyled">
@@ -33,60 +39,3 @@
 
 </section>  
  -->
-
-<script>
-  function SideScroll(selector) {
-    // Store reference to element
-    this.$el = $(selector);
-
-    // Add scroll listeners
-    this.$el.on('mousewheel', function(event) {
-      // Scroll left instead of down
-      this.scrollLeft -= (event.originalEvent.wheelDeltaY);
-      
-      // Stop from actuall scrolling down
-      event.preventDefault();
-    });
-
-    // Update when the window resizes
-    $(window).on('resize', this.update.bind(this));
-
-    // Perform initial calculation
-    this.update();
-  }
-  
-  SideScroll.prototype.update = function() {
-    // Calculate height of container
-    var height = this.$el.outerHeight();
-    var width = this.$el.outerWidth();
-
-    // Make boxes sized right
-    var size;
-    if (width > height)
-      size = height;
-    else
-      size = width;
-
-    this.$el.css({ fontSize: size });
-
-    // Calculate width of children
-    var width = 0;
-    this.$el.find('.sidescroll-content').children().each(function(index, el) {
-      width += el.offsetWidth;
-    });
-
-    // Adjust content width
-    this.$el.find('.sidescroll-content').css({
-      width: width
-    });
-  };
-  
-  SideScroll.prototype.add = function(el) {
-    this.$el.append(el);
-    this.update();
-  };
-
-  // Create instance
-  var scroll = new SideScroll('#sidescroll');
-
-</script>

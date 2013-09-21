@@ -7,7 +7,8 @@ window.app = angular.module('mean', [
   'mean.articles',
   'mean.books',
   'mean.videos',
-  'mean.profile'
+  'mean.profile',
+  'ui.jq'
 ]);
 
 angular.module('mean.system', []);
@@ -15,3 +16,4 @@ angular.module('mean.articles', []);
 angular.module('mean.books', []);
 angular.module('mean.videos', []);
 angular.module('mean.profile', []);
+angular.module('ui.jq', []);

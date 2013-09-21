@@ -54,11 +54,3 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
 
 
 }]);
-app.directive("scroll", function(){
-    return {
-        restrict:"E",
-        templateUrl: '/views/templates/scroll.html'
-    };
-});
-
-

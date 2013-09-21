@@ -7,7 +7,9 @@ angular.module('mean.books')
         var book = new Books({
             title: this.title,
             content: this.content,
-            author: this.author
+            author: this.author,
+            thumbnail: this.thumbnail
+
         });
         book.$save(function(response) {
             $location.path("book/" + response._id);
@@ -16,6 +18,7 @@ angular.module('mean.books')
         this.title = "";
         this.content = "";
         this.author = "";
+        this.thumbnail = "";
     };
     $scope.remove = function(book) {
         book.$remove();  
@@ -57,6 +60,7 @@ angular.module('mean.books')
     $scope.sendTitle = function(titleObj){
         $scope.title = titleObj.volumeInfo.title;
         $scope.name = titleObj.volumeInfo.authors[0];
+        $scope.thumbnail = titleObj.volumeInfo.imageLinks.thumbnail;
         $scope.toggleTitleList = false;
     };
     //listen to select event
@@ -75,7 +79,7 @@ angular.module('mean.books')
                if ( newval !== $scope.title ){
                 $scope.toggleTitleList = true;
                }
-                       console.log(data.items);
+                      console.log(data.items);
                       $scope.bookTitleInfo = data.items;
             }).error(function(data, status, headers, config) {
                     //    console.log('ERROR', arguments);
