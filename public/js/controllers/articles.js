@@ -1,6 +1,6 @@
 angular.module('mean.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', 'Global', 'Articles','$http',  function ($scope, $routeParams, $location, Global, Articles, $http) {
     $scope.global = Global;
- 
+
 
     $scope.create = function() {
         var article = new Articles({
@@ -16,7 +16,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     };
 
     $scope.remove = function(article) {
-        article.$remove();  
+        article.$remove();
 
         for (var i in $scope.articles) {
             if ($scope.articles[i] == article) {
@@ -54,3 +54,11 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
 
 
 }]);
+
+app.directive("viewcontent", function(){
+    return function(scope, element){
+        element.on("click", function(){
+        console.log('bonsoir');
+        });
+    };
+});

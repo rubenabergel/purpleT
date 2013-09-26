@@ -1,5 +1,5 @@
 angular.module('mean.videos')
-  .controller('VideosController', ['$scope', '$routeParams', '$location', 'Global', 'Videos','$http',  
+  .controller('VideosController', ['$scope', '$routeParams', '$location', 'Global', 'Videos','$http',
     function ($scope, $routeParams, $location, Global, Videos, $http) {
     $scope.global = Global;
 
@@ -8,7 +8,7 @@ angular.module('mean.videos')
             title: this.title,
             content: this.content,
             url: this.url,
-            Yid: this.Yid
+            Yid: $scope.findYid(this.url)
         });
         video.$save(function(response) {
             $location.path("videos/" + response._id);
@@ -22,7 +22,7 @@ angular.module('mean.videos')
 
 
     $scope.remove = function(video) {
-        video.$remove();  
+        video.$remove();
 
         for (var i in $scope.videos) {
             if ($scope.videos[i] == video) {
@@ -58,13 +58,14 @@ angular.module('mean.videos')
     };
 
     $scope.findYid = function(url){
-       $scope.Yid;
+       var Yid;
+       var pre;
        for ( char in url ){
          if ( url[char] === "=" ){
-            $scope.Yid = url.slice(char);
-            console.log('1',Yid);
+            pre = url.slice(char);
+            Yid = pre.slice(1);
         }
-    }return $scope.Yid;
+    }return Yid;
     };
 
         $scope.sendVideoinfo = function(url){
@@ -73,5 +74,4 @@ angular.module('mean.videos')
 
 
 }]);
-
 

@@ -29,6 +29,11 @@ var BookSchema = new Schema({
         default: '',
         trim: true
     },
+    quotes: {
+        type: String,
+        default: '',
+        trim: true
+    },
     thumbnail: {
         type: String,
         default: '',

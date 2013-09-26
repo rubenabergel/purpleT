@@ -1,0 +1,13 @@
+  <div class="sidescroll-content">
+
+
+   <div class="grid">
+      <div data-ng-repeat="book in ngModel">
+        <h3>{{book.title}}</h3>
+        <h3>{{book.created | date:'medium'}}</h3>
+        <h5>{{article.content}}</h5>
+        <img src={{book.thumbnail}}>
+      </div>
+    </div>
+
+  </div>

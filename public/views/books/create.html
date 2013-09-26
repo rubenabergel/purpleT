@@ -1,6 +1,6 @@
 <section data-ng-controller="BooksController">
   <form class="form-horizontal" data-ng-submit="create()">
-   
+
     <div class="control-group">
       <label class="control-label" for="title">Book Title</label>
       <div class="controls">
@@ -14,17 +14,25 @@
         <input type="text" data-ng-model="name" id="name" placeholder="Name" required>
       </div>
     </div>
-    
-
     <div>
       <ul ng-show="toggleTitleList">
         <li ng-repeat="title in bookTitleInfo" enter leave><span ng-click="sendTitle(title)">{{title.volumeInfo.title}} - {{title.volumeInfo.authors[0]}}</span></li>
       <ul>
     </div>
+      <div>
+<img src={{thumbnail}}>
+</div>
     <div class="control-group">
       <label class="control-label" for="content">Content</label>
       <div class="controls">
         <textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+      </div>
+    </div>
+
+     <div class="control-group">
+      <label class="control-label" for="quotes">Quotes</label>
+      <div class="controls">
+        <textarea data-ng-model="quotes" id="quotes" cols="30" rows="2" placeholder="Content"></textarea>
       </div>
     </div>
         <input type="submit" class="btn">

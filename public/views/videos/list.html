@@ -1,18 +1,6 @@
 <section data-ng-controller="VideosController" data-ng-init="find()">
-
-  <ul>
-    <li data-ng-repeat="video in videos">
-<!--     //  <div>{{video.content}}</div>
- -->    <!--   <div>{{video.content}}</div> -->
-             <div>{{video.url}}</div>
-       <div>{{video.Yid}}</div>
-          <div>{{Yid}}</div>
-
-      <iframe id="ytplayer" type="text/html"  
-      src="http://www.youtube.com/embed"+Yid) frameborder="0" allowfullscreen></iframe>
-
-
-    </li>
-  </ul>
-
+<div ng-app="mean.videos">
+<div class="sidescroll" id="sidescroll" vhoriscroller ng-model="videos"></div>
+</div>
 </section>
+

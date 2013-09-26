@@ -79,7 +79,7 @@ module.exports = function(passport) {
             });
         }
     ));
-
+console.log('qqqq', config.facebook.clientID);
     //Use facebook strategy
     passport.use(new FacebookStrategy({
             clientID: config.facebook.clientID,

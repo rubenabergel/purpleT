@@ -1,7 +1,7 @@
 <section data-ng-controller="BooksController" data-ng-init="find()">
 
 <div ng-app="mean.books">
-<div class="sidescroll" id="sidescroll" horiscroller ng-model="books"></div>
+<div class="sidescroll" id="sidescroll" bhoriscroller ng-model="books"></div>
 </div>
 
 
@@ -39,7 +39,7 @@
       <div>{{article.content}}</div>
     </li>
   </ul>
-  
+
 
   <h1 data-ng-hide="!books || books.length">No books yet. <br> Why don't you <a href="/#!/books/create">Create One</a>?</h1>
 

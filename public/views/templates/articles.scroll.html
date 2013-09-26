@@ -1,0 +1,13 @@
+  <div class="sidescroll-content">
+
+    <div class="grid">
+      <div viewcontent data-ng-repeat="article in ngModel">
+        <h3>{{article.title}}</h3>
+        <h3>{{article.created | date:'medium'}}</h3>
+        <h5 style="font-size:12px">{{article.content}}</h5>
+      </div>
+    </div>
+
+  </div>
+
+

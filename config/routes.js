@@ -9,7 +9,7 @@ module.exports = function(app, passport, auth) {
 
     //Setting up the users api
     app.post('/users', users.create);
-    
+
     app.post('/users/session', passport.authenticate('local', {
         failureRedirect: '/signin',
         failureFlash: 'Invalid email or password.'
@@ -70,7 +70,7 @@ module.exports = function(app, passport, auth) {
     app.get('/articles/:articleId', articles.show);
     app.put('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.update);
     app.del('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy);
-    
+
     //Finish with setting up the articleId param
     app.param('articleId', articles.article);
 
@@ -88,7 +88,7 @@ module.exports = function(app, passport, auth) {
     app.param('bookId', books.book);
 
 //########################################################################
-    
+
     //Video Routes
     var videos = require('../app/controllers/videos');
     app.get('/videos', videos.all);
@@ -101,8 +101,14 @@ module.exports = function(app, passport, auth) {
     app.param('videoId', videos.video);
 
 ////////////////////////////////////////////////////////////////////////////
-     var profile = require('../app/controllers/profile');
-     app.get('/profile');
+    var profile = require('../app/controllers/profile');
+     app.get('/profile', function(req, res) {
+        req.respond({
+            articles: articles.all,
+            books: books.all,
+            videos: videos.all
+        });
+    });
     //Home route
     var index = require('../app/controllers/index');
     app.get('/', index.render);
