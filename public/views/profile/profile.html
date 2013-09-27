@@ -1,12 +1,33 @@
 <section data-ng-controller="ProfileController" data-ng-init="find()">
+  <div ng-app="mean.profile">
+    <div class="sidescroll" id="sidescroll" phoriscroller ng-model="articles"></div>
+  </div>
+  <!-- <div ng-app="mean.books">
+  <div class="sidescroll" id="sidescroll" phoriscroller ng-model="books"></div>
+  </div>
+   -->
+</section>
+
+
+<!-- <section data-ng-controller="BooksController" data-ng-init="find()">
+
+<div ng-app="mean.books">
+<div class="sidescroll" id="sidescroll" bhoriscroller ng-model="books"></div>
+</div>
+
+
+</section> -->
+
+
+<!-- <section data-ng-controller="ProfileController" data-ng-init="find()">
 <h2>Hello</h2>
 
 <ul>
 <li data-ng-repeat="article in articles">
-<span>{{article.created | date:'medium'}}</span> 
+<span>{{article.created | date:'medium'}}</span>
 </li>
 <ul>
-<!--  <ul class="articles unstyled">
+ <ul class="articles unstyled">
     <li data-ng-repeat="article in articles">
       <span>{{article.created | date:'medium'}}</span> /
       <span>{{article.user.name}}</span>
@@ -22,7 +43,8 @@
       <div>{{book.content}}</div>
       <div>{{article.content}}</div>
     </li>
-  </ul> -->
+  </ul>
 
 
-</section>  
+</section>
+ -->

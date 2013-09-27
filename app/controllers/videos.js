@@ -5,6 +5,8 @@ var mongoose = require('mongoose'),
     async = require('async'),
     Video = mongoose.model('Video'),
     _ = require('underscore');
+        Schema = mongoose.Schema,
+    User = mongoose.model('User');
 
 
 /**
@@ -32,7 +34,7 @@ exports.create = function(req, res) {
                 errors: err.errors,
                 video: video
             });
-        } 
+        }
         else {
             res.jsonp(video);
         }
@@ -79,14 +81,89 @@ exports.show = function(req, res) {
 /**
  * List of Articles
  */
+
+ var findSubDomain = function(str){
+    var q = str.split('.');
+    if (q.length > 2 ){
+        return q[0];
+    }
+};
 exports.all = function(req, res) {
-    Video.find().sort('-created').populate('user').exec(function(err, videos) {
+    console.log('findsub', findSubDomain(req.host));
+
+    if (findSubDomain(req.host) !== undefined ){
+
+    Video.getForUser(findSubDomain(req.host), function(err, videos){
+        if(err) return res.render('error', { status: 500 });
+        res.jsonp(videos);
+    });
+
+
+ } else { Video.findOne({'user': req.user.id },function (err, video) {
+        console.log('inme');
+    if(err) throw err;
+    if(video){
+        Video.find({'user': req.user.id }).sort('-created').populate('user').exec(function(err, videos) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
+            console.log('oura');
             res.jsonp(videos);
+
         }
     });
+    }else{
+        console.log('not the right user');
+    }
+});
+}
 };
+
+
+
+//     User.findOne({'lusername': findSubDomain(req.host) },function (err, user) {
+//     if(err) throw err;
+//     if(user){
+//         Article.find().sort('-created').populate('user').exec(function(err, articles) {
+//         if (err) {
+//             res.render('error', {
+//                 status: 500
+//             });
+//         } else {
+//             res.jsonp(articles);
+//         }
+//     });
+//     }else{
+//         console.log('NOOOOOOOOOO');
+//     }
+// });
+// };
+
+
+
+
+
+
+
+//     Video.findOne({'user': req.user.id },function (err, video) {
+//         console.log('inme');
+//     if(err) throw err;
+//     if(video){
+//         Video.find({'user': req.user.id }).sort('-created').populate('user').exec(function(err, videos) {
+//         if (err) {
+//             res.render('error', {
+//                 status: 500
+//             });
+//         } else {
+//             console.log('oura');
+//             res.jsonp(videos);
+
+//         }
+//     });
+//     }else{
+//         console.log('not the right user');
+//     }
+// });
+// };

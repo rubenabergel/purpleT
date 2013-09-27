@@ -15,6 +15,7 @@ var UserSchema = new Schema({
     name: String,
     email: String,
     username: String,
+    lusername: String,
     provider: String,
     hashed_password: String,
     salt: String,
@@ -72,6 +73,8 @@ UserSchema.path('hashed_password').validate(function(hashed_password) {
  * Pre-save hook
  */
 UserSchema.pre('save', function(next) {
+    this.lusername = this.username.toLowerCase();
+    console.log( 'HERE', this.username);
     if (!this.isNew) return next();
 
     if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1)
@@ -118,4 +121,4 @@ UserSchema.methods = {
     }
 };
 
-mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);

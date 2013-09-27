@@ -50,6 +50,7 @@ div{
 
   .sidescroll-content {
     height: 100%;
+
   }
 
   .grid,
@@ -97,7 +98,7 @@ div{
     border: 1px solid black;
   }
 
-  @media all and (max-height: 600px), all and (orientation: portrait) {
+  @media all and (max-height: 300px), all and (orientation: portrait) {
     .grid.small {
       width: 2em;
     }
@@ -107,7 +108,7 @@ div{
     .grid div {
       width: 1em;
       height: 100%;
-      background-color: red;
+      background-color: green;
     }
   }
 

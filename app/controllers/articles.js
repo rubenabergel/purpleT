@@ -4,7 +4,9 @@
 var mongoose = require('mongoose'),
     async = require('async'),
     Article = mongoose.model('Article'),
-    _ = require('underscore');
+    _ = require('underscore'),
+    Schema = mongoose.Schema,
+    User = mongoose.model('User');
 
 
 /**
@@ -32,7 +34,7 @@ exports.create = function(req, res) {
                 errors: err.errors,
                 article: article
             });
-        } 
+        }
         else {
             res.jsonp(article);
         }
@@ -79,15 +81,75 @@ exports.show = function(req, res) {
 /**
  * List of Articles
  */
+
+var findSubDomain = function(str){
+    var q = str.split('.');
+    if (q.length > 2 ){
+        return q[0];
+    }
+};
+// var s = findSubDomain(req.host);
+    // console.log('find', findSubDomain(req.host), s);
+
 exports.all = function(req, res) {
-    Article.find().sort('-created').populate('user').exec(function(err, articles) {
+    console.log('findsub', findSubDomain(req.host));
+
+    if (findSubDomain(req.host) !== undefined ){
+
+    Article.getForUser(findSubDomain(req.host), function(err, articles){
+        if(err) return res.render('error', { status: 500 });
+        res.jsonp(articles);
+    });
+
+
+ } else { Article.findOne({'user': req.user.id },function (err, article) {
+        console.log('inme');
+    if(err) throw err;
+    if(article){
+        Article.find({'user': req.user.id }).sort('-created').populate('user').exec(function(err, articles) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
+            console.log('oura');
             res.jsonp(articles);
+
         }
     });
+    }else{
+        console.log('not the right user');
+    }
+});
+}
 };
 
+
+//     User.findOne({'lusername': findSubDomain(req.host) },function (err, user) {
+//     if(err) throw err;
+//     if(user){
+//         Article.find().sort('-created').populate('user').exec(function(err, articles) {
+//         if (err) {
+//             res.render('error', {
+//                 status: 500
+//             });
+//         } else {
+//             res.jsonp(articles);
+//         }
+//     });
+//     }else{
+//         console.log('NOOOOOOOOOO');
+//     }
+// });
+// };
+
+//     Article.find().sort('-created').populate('user').exec(function(err, articles) {
+//         if (err) {
+//             res.render('error', {
+//                 status: 500
+//             });
+//         } else {
+//             res.jsonp(articles);
+//         }
+//     });
+// };

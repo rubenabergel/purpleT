@@ -5,7 +5,8 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
     $scope.create = function() {
         var article = new Articles({
             title: this.title,
-            content: this.content
+            content: this.content,
+            url: this.url
         });
         article.$save(function(response) {
             $location.path("articles/" + response._id);
@@ -13,6 +14,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
 
         this.title = "";
         this.content = "";
+        this.url = "";
     };
 
     $scope.remove = function(article) {
@@ -51,6 +53,10 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         });
     };
 
+    $scope.sendArticleinfo = function(url){
+    $scope.url = video.url;
+    };
+
 
 
 }]);
@@ -58,7 +64,9 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
 app.directive("viewcontent", function(){
     return function(scope, element){
         element.on("click", function(){
-        console.log('bonsoir');
+            element.css({"width": "100px", "height": "70px"});
+            console.log("PLUUUUU");
+
         });
     };
 });

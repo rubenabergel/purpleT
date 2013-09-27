@@ -102,13 +102,7 @@ module.exports = function(app, passport, auth) {
 
 ////////////////////////////////////////////////////////////////////////////
     var profile = require('../app/controllers/profile');
-     app.get('/profile', function(req, res) {
-        req.respond({
-            articles: articles.all,
-            books: books.all,
-            videos: videos.all
-        });
-    });
+     app.get('/profile', profile.all);
     //Home route
     var index = require('../app/controllers/index');
     app.get('/', index.render);

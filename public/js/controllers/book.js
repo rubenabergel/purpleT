@@ -1,5 +1,5 @@
 angular.module('mean.books')
-  .controller('BooksController', ['$scope', '$routeParams', '$location', 'Global', 'Books','$http',  
+  .controller('BooksController', ['$scope', '$routeParams', '$location', 'Global', 'Books','$http',
     function ($scope, $routeParams, $location, Global, Books, $http) {
     $scope.global = Global;
 
@@ -21,7 +21,7 @@ angular.module('mean.books')
         this.thumbnail = "";
     };
     $scope.remove = function(book) {
-        book.$remove();  
+        book.$remove();
 
         for (var i in $scope.books) {
             if ($scope.books[i] == book) {
@@ -104,5 +104,13 @@ app.directive("leave", function(){
         });
     };
 });
+
+app.directive("quotepage", function(){
+    return function(scope, element){
+        element.on("click", function(){
+            console.log('click');
+        })
+    }
+})
 
 
